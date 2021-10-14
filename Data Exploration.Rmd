@@ -2,7 +2,10 @@
 title: "Data Exploration"
 author: "Dominik Meier"
 date: "12 9 2021"
-output: html_document
+output:
+  html_document:
+    toc: true
+    toc_float: true
 editor_options: 
   chunk_output_type: console
 ---
@@ -23,9 +26,7 @@ library(corrplot)
 df <- read_csv("all_projects_translated.csv")
 ```
 
-```{r}
-names(df)
-```
+
 
 ## Frequency of Funding Instruments
 ```{r}
@@ -161,12 +162,12 @@ df_sdgs <- df %>%
 
 ## Plot sdgs
 ```{r}
-plot_sdg(df_sdgs, systems = c("aurora", "elsevier", "siris", "ontology", "sdsn"))
+plot_sdg(df_sdgs %>% filter(!is.na(sdg)), systems = c("aurora", "elsevier", "siris", "ontology", "sdsn"))
 ```
 
 ## Correlation between systems
 ```{r}
-cor_systems <- crosstab_sdg(df_sdgs, systems = c("aurora", "elsevier", "siris", "ontology", "sdsn"))
+cor_systems <- crosstab_sdg(df_sdgs %>% filter(!is.na(sdg)), systems = c("aurora", "elsevier", "siris", "ontology", "sdsn"))
 
 
 col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
