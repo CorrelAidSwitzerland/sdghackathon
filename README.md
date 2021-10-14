@@ -57,6 +57,7 @@ The ['text2sdg'](https://github.com/dwulff/text2sdg) R package was used to detec
 
 
 #### Changes made to the original P3 databse
+We deleted all Projects that did not have an abstract. 
 The following variables have been deleted:
 * Project Title English | text 
 * Responsible Applicant | text 
