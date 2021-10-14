@@ -7,7 +7,7 @@ This Hackathon aims at creating visualisations that provide insights on the amou
 The data that is provided for this hackathon is the P3 database containing the projects that have been approved for funding by the Swiss National Science Foundation (SNSF) between 1980(?) and Aug-2021, downloaded from https://p3.snf.ch/Pages/DataAndDocumentation.aspx. We made some changes to this dataset, most notably translated non english abstracts to english and detected SDGs in the abstracts with the 'text2sdg' R package (more information provided below). 
 
 ## Description of the datasets
-There are two datasets 'SNSF_Projects_main.csv' and 'SNSF_Projects_detailed.csv'. 'SNSF_Projects_main.csv' is the main dataset that contains all the relevant information. The 'SNSF_Projects_detailed.csv' dataset contains three additional variables ('Project Number String', 'Institution' and 'abstract_translated_indicator') that can be joined on the main dataset via the 'Project Number' if one is interested in this data. 
+There are two datasets `SNSF_Projects_main.csv` and `SNSF_Projects_detailed.csv`. `SNSF_Projects_main.csv` is the main dataset that contains all the relevant information. The `SNSF_Projects_detailed.csv` dataset contains three additional variables ('Project Number String', 'Institution' and 'abstract_translated_indicator') that can be joined on the main dataset via the 'Project Number' if one is interested in this data. 
 
 ### 1) SNSF_Projects_main.csv
 The dataset contains the following columns:
