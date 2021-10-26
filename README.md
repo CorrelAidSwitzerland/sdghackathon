@@ -29,7 +29,7 @@ The five systems are shortly described below, listed in alphabetical order:
 _All SDGs (1-17) are covered_
 * **Elsevier**: A dataset containing the SDG queries developed by [Elsevier](https://www.elsevier.com/connect/sdg-report). The queries are available from [data.mendeley.com](https://data.mendeley.com/datasets/87txkw7khs/1). The Elsevier queries were developed to maximize SDG hits on the [Scopus database](https://dev.elsevier.com/documentation/ScopusSearchAPI.wadl). A detailed description of how each SDG query was developed can be found [here](https://elsevier.digitalcommonsdata.com/datasets/87txkw7khs/1). Version 1 is used in the 'text2sdg' package. 
 _SDGs 1-16 are covered (i.e. SDG-17 is not covered)_
-* **Ontology**: A dataset containing the SDG queries based on the keyword ontology of Bautista-Puig and Mauleón (2019)[1]. The queries are available from [figshare.com](https://figshare.com/articles/dataset/SDG_ontology/11106113/1). The authors of these queries first created an ontology from selected keywords present in the SDG descriptions and expanded them with keywords from publications from the Web of Science which included the phrases "Millennium Development Goals" and "Sustainable Development Goals".
+* **Ontology**: A dataset containing the SDG queries based on the keyword ontology of Bautista-Puig and Maule?n (2019)[1]. The queries are available from [figshare.com](https://figshare.com/articles/dataset/SDG_ontology/11106113/1). The authors of these queries first created an ontology from selected keywords present in the SDG descriptions and expanded them with keywords from publications from the Web of Science which included the phrases "Millennium Development Goals" and "Sustainable Development Goals".
 _All SDGs (1-17) are covered_
 * **SDSN**: A dataset containing SDG-specific keywords compiled from several universities from the Sustainable Development Solutions Network (SDSN) Australia, New Zealand & Pacific Network. The authors used UN documents, Google searches and personal communications as sources for keywords.
 _All SDGs (1-17) are covered_
@@ -48,23 +48,12 @@ The dataset contains the following columns:
 |Column #|Name|Type|Description|
 | ------ | ------ | ------ | ------ |
 |1| project_number | numeric |Project identifier.|
-|2| Project Title | text |Short description of the project.|
+|2| University(*) | text |Institution where the project will largely be carried out, based on a list to pick at the moment of the application.|
 |3| Funding Instrument | text |Research funding scheme as defined by https://www.snf.ch/en/9o5ezhuSlHENVQxr/page/overview-of-funding-schemes|
-|4| Funding Instrument Hierarchy | text |Top level hierarchy of the research funding scheme.|
-|5| Institution Country(*) | text |The country of the institution. Most international locations are related to mobility fellowships.|
-|6| University(*) | text |Institution where the project will largely be carried out, based on a list to pick at the moment of the application.|
-|7| Discipline Number(*) | numeric |Discipline ID defined by the SNSF. Defined for the main discipline.|
-|8| Discipline Name(*) | text |Discipline name defined by the SNSF. Defined for the main discipline.|
-|9| Discipline Name Hierarchy | text |The hierarchy of the main discipline.|
-|10| All disciplines | text |List of all the discipline IDs involved in the project.|
-|11| Start Date | text |Date at which the project starts (dd.mm.yyyy).|
-|12| End Date | text |Actual date at which the project ends. Updated if necessary (dd.mm.yyyy).|
-|13| Approved Amount | text |Approved funding amount. Updated if modified. Format is text because not always a number is stored. Ex: it may say "not included in P3".|
-|14| Keywords | text |Keywords related to the project.|
-|15| abstract_english| text | The scientific abstract of the research project in English, either the original one or the translated one.|
-|16| sdg | text | SDG that has been detected, NA if no SDG has been detected in this document by the given system |
-|17| system | text | Query system used to detect SDG (see details in Section "SDG detection process") |
-|18| hits | numeric | How many hits were produced for a given SDG for the given document by the given system |
+|4| Discipline Name(*) | text |Discipline name defined by the SNSF. Defined for the main discipline.|
+|5| sdg | text | SDG that has been detected, NA if no SDG has been detected in this document by the given system |
+|6| system | text | Query system used to detect SDG (see details in Section "SDG detection process") |
+|7| hits | numeric | How many hits were produced for a given SDG for the given document by the given system |
 (*) These columns are filled out from a drop-down list provided by the SNSF submission system.
 
 ### 2) Detailed description of the extended dataset (`SNSF_Projects_detailed.csv`)
@@ -72,10 +61,21 @@ The dataset contains the following columns:
 
 |Column #|Name|Type|Description|Type of entry|
 | ------ | ------ | ------ | ------ | ------ |
-|1| Project Number | numeric |Project identifier.||
-|2| Project Number String | text |Full-text project identifier.||
-|3| Institution | text |Institution where the project will largely be carried out.|Free text|
-|4| abstract_translated_indicator| text |Flag indicating whether the abstract has been translated to English.|Free text|
+|1| project_number | numeric |Project identifier.|
+|2| project_title | text |Short description of the project.|
+|3| funding_instrument_hierarchy | text |Top level hierarchy of the research funding scheme.|
+|4| institution | text |Institution where the project will largely be carried out.|Free text|
+|5| institution_country(*) | text |The country of the institution. Most international locations are related to mobility fellowships.|
+|6| discipline_number(*) | numeric |Discipline ID defined by the SNSF. Defined for the main discipline.|
+|7| discipline_name_hierarchy | text |The hierarchy of the main discipline.|
+|8| all_disciplines | text |List of all the discipline IDs involved in the project.|
+|9| start_date | text |Date at which the project starts (dd.mm.yyyy).|
+|10| end_date | text |Actual date at which the project ends. Updated if necessary (dd.mm.yyyy).|
+|11| approved_amount | text |Approved funding amount. Updated if modified. Format is text because not always a number is stored. Ex: it may say "not included in P3".|
+|12| keywords | text |Keywords related to the project.|
+|13| abstract_translated| text |Flag indicating whether the abstract has been translated to English.|Free text|
+|14| abstract | text | The scientific abstract of the research project in English, either the original one or the translated one.|
+(*) These columns are filled out from a drop-down list provided by the SNSF submission system.
 
 ## Appendix
 #### Changes carried out to the original P3 database
@@ -95,4 +95,4 @@ The dataset contains the following columns:
 -- Abstract | text --> This is the original abstract of the research project. It differs from `abstract_english` (provided in the main dataset) in that it is written in the original language when it is not English.
 
 #### References
-[1] Bautista-Puig, N.; Mauleón E. (2019). Unveiling the path towards sustainability: is there a research interest on sustainable goals? In the 17th International Conference on Scientometrics & Informetrics (ISSI 2019), Rome (Italy), Volume II, ISBN 978-88-3381-118-5, p.2770-2771.
+[1] Bautista-Puig, N.; Maule?n E. (2019). Unveiling the path towards sustainability: is there a research interest on sustainable goals? In the 17th International Conference on Scientometrics & Informetrics (ISSI 2019), Rome (Italy), Volume II, ISBN 978-88-3381-118-5, p.2770-2771.
