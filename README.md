@@ -39,10 +39,10 @@ _SDGs 1-16 are covered (i.e. SDG-17 is not covered)_
 
 ## Description of datasets
 Two datasets are made available in the repository:
-- **Main dataset**: `SNSF_Projects_main.csv`, which contains all the relevant information.
+- **Main dataset**: `main_dataset_with_sdg.csv`, which contains all the relevant information.
 - **Extended dataset**: `SNSF_Projects_detailed.csv`, which contains three additional columns. (`project_number_string`, `institution` and `abstract_translated_indicator` --see descriptions in item (2) below--). This dataset can be joined with the main dataset on the `project_number`, if one is interested in using this data.
 
-### 1) Detailed description of the main dataset (`SNSF_Projects_main.csv`)
+### 1) Detailed description of the main dataset (`main_dataset_with_sdg.csv`)
 The dataset contains the following columns:
 
 |Column #|Name|Type|Description|
