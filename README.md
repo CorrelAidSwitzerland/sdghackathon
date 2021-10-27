@@ -1,5 +1,4 @@
-# SDG Hackathon 2021
-## Visualisation of Sustainable Development Goals
+# SDG Hackathon - Visualisation of Sustainable Development Goals
 
 ## Overview
 To goal of the hackathon is to achieve a better understanding of how the Swiss research landscape addresses the UN Sustainable Development Goals (SDGs), as well as of the methods used to map research to SDGs.
