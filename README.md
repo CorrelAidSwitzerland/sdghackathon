@@ -118,5 +118,5 @@ _SDGs 1-16 are covered (i.e. SDG-17 is not covered)_
 -- Abstract | text --> This is the original abstract of the research project. It differs from `abstract_english` (provided in the main dataset) in that it is written in the original language when it is not English.
 
 
-#### References
+### References
 [1] Bautista-Puig, N.; Maule?n E. (2019). Unveiling the path towards sustainability: is there a research interest on sustainable goals? In the 17th International Conference on Scientometrics & Informetrics (ISSI 2019), Rome (Italy), Volume II, ISBN 978-88-3381-118-5, p.2770-2771.
