@@ -1,50 +1,64 @@
 # SDG Hackathon 2021
-## _The Swiss hackathon on the visualisation of Sustainable Development Goals_
+## Visualisation of Sustainable Development Goals
 
 ## Overview
-This Hackathon aims at creating visualisations that provide insights on the amount and quality of research in the direction of achieving the 17 Sustainable Development Goals (SDG) established by the United Nations at the Earth Summit in Rio de Janeiro in 1992.
+To goal of the hackathon is to achieve a better understanding of how the Swiss research landscape addresses the UN Sustainable Development Goals (SDGs), as well as of the methods used to map research to SDGs.
 
-The data provided for this hackathon is a subset of the P3 database (Projects-People-Publications) organised and made publicly available by the Swiss National Science Foundation (SNSF). The P3 database contains the projects that have been approved for funding by SNSF between 1975 and the present.
+We provide a preanalyzed data set of research projects based on the P3 (Projects-People-Publications) of the Swiss National Science Foundation (SNSF). The P3 database contains information on various types of research projects funded by the SNSF. We have used the text2sdg R package (https://dwulff.github.io/text2sdg/) to map project descriptions to the 17 SDGs using five different SDG-labeling systems. 
 
-The data has already been downloaded by us from https://p3.snf.ch/Pages/DataAndDocumentation.aspx, and then prepared for the Hackathon with the following changes:
-- the dataset was filtered to projects that contain an abstract; this eliminated all the projects funded prior to 2006; 
-- non-English abstracts were translated to English using the [EasyNMT](https://pypi.org/project/EasyNMT/) Python package;
-- SDGs were detected in all the abstracts (once translated if needed) using the [text2sdg](https://cran.r-project.org/web/packages/text2sdg/index.html) R package
+The following sections provide more information on the data set and the SDG-labeling systems. 
 
-The detailed changes carried out on the original dataset are described in the Appendix.
-The next section outlines the process used to detect SDGs in the abstracts.
+### Data
 
-## SDG detection process
-The [text2sdg](https://github.com/dwulff/text2sdg) R package was used to detect SDGs in the project abstracts. It implements five query-based systems that are used to detect SDGs in text.
+The source data was downloaded from the [P3 open data page](https://p3.snf.ch/Pages/DataAndDocumentation.aspx) and processed in the following way. First, we eliminated all projects without an abstract, which led to the exclusion of XXX projects (XX%) including all projects funded prior to 2006. Second, all non-English abstracts were automatically translated to English using the [EasyNMT](https://pypi.org/project/EasyNMT/) Python library. Third, we matched all abstracts to the 17 SDGs using the five labeling systems implemented in the [text2sdg](https://cran.r-project.org/web/packages/text2sdg/index.html) R package. A list of changes to the P3 database can in the Appendix below.
+   
+We provide a **main data set** and a **supplementary data set**. The main data set provices information on key variables of interest, such as the discipline, the funding instrument, the hosting University, and the sdg labels. The supplementary data set provides additional information on the projects such as, the actual abstract and more detail on the disciplines or funding instruments.
 
-From a first analysis performed by our team, they differ in a few aspects, including:
-- the logic behind the definition of the queries and keywords used;
-- the effort devoted to the development of the system;
-- the expertise of the team responsible of their design.
+### SDG labeling
 
-There is likely an intrinsic trade-off between quality and quantity of the query hits delivered by each system. To the best of our knowledge, a rigourous validation of their performance and quality does not yet exist.
+The projects were labeled using five Lucene-style query systems implemented in the [text2sdg](https://github.com/dwulff/text2sdg) R package. The systems have been developed by different for-profit and non-profit organizations. So far, both independent and comparative evaluations of the quality of these systems are largely missing. However, it is clear that the systems differ in how liberal they assign the 17 SDGs to texts. The Elsevier, SIRIS, and, escpecially, the Aurora system recruit more complicated queries than SDSN and Ontology and are therefore more conservative (assign fewer SDGs) than the latter two.
 
-The five systems are shortly described below, listed in alphabetical order:
-* **Aurora**: These queries were developed by the [Aurora Universities Network](https://aurora-network.global/activity/sustainability/). The Aurora queries were designed to be precise rather than sensitive. To this end, queries have been designed to make use of complex keyword-combinations using several different logical search operators (e.g. 'and', 'or', etc.). [Version 5.0](https://github.com/Aurora-Network-Global/sdg-queries) is used in the 'text2sdg' package.
-_All SDGs (1-17) are covered_
-* **Elsevier**: A dataset containing the SDG queries developed by [Elsevier](https://www.elsevier.com/connect/sdg-report). The queries are available from [data.mendeley.com](https://data.mendeley.com/datasets/87txkw7khs/1). The Elsevier queries were developed to maximize SDG hits on the [Scopus database](https://dev.elsevier.com/documentation/ScopusSearchAPI.wadl). A detailed description of how each SDG query was developed can be found [here](https://elsevier.digitalcommonsdata.com/datasets/87txkw7khs/1). Version 1 is used in the 'text2sdg' package. 
-_SDGs 1-16 are covered (i.e. SDG-17 is not covered)_
-* **Ontology**: A dataset containing the SDG queries based on the keyword ontology of Bautista-Puig and Maule?n (2019)[1]. The queries are available from [figshare.com](https://figshare.com/articles/dataset/SDG_ontology/11106113/1). The authors of these queries first created an ontology from selected keywords present in the SDG descriptions and expanded them with keywords from publications from the Web of Science which included the phrases "Millennium Development Goals" and "Sustainable Development Goals".
-_All SDGs (1-17) are covered_
-* **SDSN**: A dataset containing SDG-specific keywords compiled from several universities from the Sustainable Development Solutions Network (SDSN) Australia, New Zealand & Pacific Network. The authors used UN documents, Google searches and personal communications as sources for keywords.
-_All SDGs (1-17) are covered_
-* **Siris**: These queries were developed by [SIRIS Academic](http://www.sirislab.com/lab/sdg-research-mapping/). The queries are available from Zenodo.org. The SIRIS queries were developed by extracting key terms from the UN official list of goals, targets and indicators as well from relevant literature around SDGs. The query system has subsequently been expanded with a pre-trained word2vec model and an algorithm that selects related words from Wikipedia.
-_SDGs 1-16 are covered (i.e. SDG-17 is not covered)_
+The labeling systems also differ in the number of SDGs that they assign. Elsevier and SIRIS only cover the first 16 SDGs excluding SDG 17 Global Partnership, whereas Aurora, SDSN, and Ontology cover all 17 SDGs. Additional detail on each query system is provided in the Appendix below.
 
+## Variables
 
-## Description of datasets
-Two datasets are made available in the repository:
-- **Main dataset**: `main_dataset_with_sdg.csv`, which contains all the relevant information.
-- **Extended dataset**: `additional_dataset_without_sdg.zip`, which contains additional columns --see descriptions in item (2) below--. This dataset can be joined with the main dataset on the `project_number`, if one is interested in using this data.
+### Main dataset (`main_dataset_with_sdg.csv`)
 
-### Reading and joining the datasets in R and pyhton
+|Column #|Name|Type|Description|
+| ------ | ------ | ------ | ------ |
+|1| project_number | numeric |Project identifier.|
+|2| project_title | text |Short description of the project.|
+|3| keywords | text |Keywords related to the project.|
+|4| authors | numeric |Project identifier.|
+|5| start_date | text |Date at which the project starts (dd.mm.yyyy).|
+|6| end_date | text |Actual date at which the project ends. Updated if necessary (dd.mm.yyyy).|
+|7| university(*) | text |Institution where the project will largely be carried out, based on a list to pick at the moment of the application.|
+|8| Funding Instrument | text |Research funding scheme as defined by https://www.snf.ch/en/9o5ezhuSlHENVQxr/page/overview-of-funding-schemes|
+|9| approved_amount | text |Approved funding amount. Updated if modified. Format is text because not always a number is stored. Ex: it may say "not included in P3".|
+|10| discipline Name(*) | text |Discipline name defined by the SNSF. Defined for the main discipline.|
+|11| sdg | text | SDG that has been detected, NA if no SDG has been detected in this document by the given system |
+|12| system | text | Query system used to detect SDG (see details in Section "SDG detection process") |
+|13| hits | numeric | How many hits were produced for a given SDG for the given document by the given system |
+(*) These columns are filled out from a drop-down list provided by the SNSF submission system.
 
-#### R
+### Supporting dataset (`additional_dataset_without_sdg.zip`)
+
+|Column #|Name|Type|Description|Type of entry|
+| ------ | ------ | ------ | ------ | ------ |
+|1| project_number | numeric |Project identifier.|
+|2| funding_instrument_hierarchy | text |Top level hierarchy of the research funding scheme.|
+|3| institution | text |Institution where the project will largely be carried out.|Free text|
+|4| institution_country(*) | text |The country of the institution. Most international locations are related to mobility fellowships.|
+|5| discipline_number(*) | numeric |Discipline ID defined by the SNSF. Defined for the main discipline.|
+|6| discipline_name_hierarchy | text |The hierarchy of the main discipline.|
+|7| all_disciplines | text |List of all the discipline IDs involved in the project.|
+|8| abstract_translated| text |Flag indicating whether the abstract has been translated to English.|Free text|
+|9| abstract | text | The scientific abstract of the research project in English, either the original one or the translated one.|
+(*) These columns are filled out from a drop-down list provided by the SNSF submission system.
+
+## Code
+
+### Reading and joining in R
 
 ```
 library(readr)
@@ -57,7 +71,7 @@ main_df <- main_df %>%
   left_join(additional_df)
 ```
 
-#### Python
+### Reading and joining in python
 
 ```python
 import pandas as pd
@@ -69,44 +83,23 @@ additional_df = pd.read_csv("additional_dataset_without_sdg.zip")
 main_df = main_df.merge(additional_df, left_on = "project_number", right_on = "project_number", how = "left")
 ```
 
-
-### 1) Detailed description of the main dataset (`main_dataset_with_sdg.csv`)
-The dataset contains the following columns:
-
-|Column #|Name|Type|Description|
-| ------ | ------ | ------ | ------ |
-|1| project_number | numeric |Project identifier.|
-|2| University(*) | text |Institution where the project will largely be carried out, based on a list to pick at the moment of the application.|
-|3| Funding Instrument | text |Research funding scheme as defined by https://www.snf.ch/en/9o5ezhuSlHENVQxr/page/overview-of-funding-schemes|
-|4| Discipline Name(*) | text |Discipline name defined by the SNSF. Defined for the main discipline.|
-|5| sdg | text | SDG that has been detected, NA if no SDG has been detected in this document by the given system |
-|6| system | text | Query system used to detect SDG (see details in Section "SDG detection process") |
-|7| hits | numeric | How many hits were produced for a given SDG for the given document by the given system |
-(*) These columns are filled out from a drop-down list provided by the SNSF submission system.
-
-### 2) Detailed description of the extended dataset (`additional_dataset_without_sdg.zip`)
-The dataset contains the following columns:
-
-|Column #|Name|Type|Description|Type of entry|
-| ------ | ------ | ------ | ------ | ------ |
-|1| project_number | numeric |Project identifier.|
-|2| project_title | text |Short description of the project.|
-|3| funding_instrument_hierarchy | text |Top level hierarchy of the research funding scheme.|
-|4| institution | text |Institution where the project will largely be carried out.|Free text|
-|5| institution_country(*) | text |The country of the institution. Most international locations are related to mobility fellowships.|
-|6| discipline_number(*) | numeric |Discipline ID defined by the SNSF. Defined for the main discipline.|
-|7| discipline_name_hierarchy | text |The hierarchy of the main discipline.|
-|8| all_disciplines | text |List of all the discipline IDs involved in the project.|
-|9| start_date | text |Date at which the project starts (dd.mm.yyyy).|
-|10| end_date | text |Actual date at which the project ends. Updated if necessary (dd.mm.yyyy).|
-|11| approved_amount | text |Approved funding amount. Updated if modified. Format is text because not always a number is stored. Ex: it may say "not included in P3".|
-|12| keywords | text |Keywords related to the project.|
-|13| abstract_translated| text |Flag indicating whether the abstract has been translated to English.|Free text|
-|14| abstract | text | The scientific abstract of the research project in English, either the original one or the translated one.|
-(*) These columns are filled out from a drop-down list provided by the SNSF submission system.
-
 ## Appendix
-#### Changes carried out to the original P3 database
+
+### Details on SDG labeling systems
+
+* **Aurora**: These queries were developed by the [Aurora Universities Network](https://aurora-network.global/activity/sustainability/). The Aurora queries were designed to be precise rather than sensitive. To this end, queries have been designed to make use of complex keyword-combinations using several different logical search operators (e.g. 'and', 'or', etc.). [Version 5.0](https://github.com/Aurora-Network-Global/sdg-queries) is used in the 'text2sdg' package.
+_All SDGs (1-17) are covered_
+* **Elsevier**: A dataset containing the SDG queries developed by [Elsevier](https://www.elsevier.com/connect/sdg-report). The queries are available from [data.mendeley.com](https://data.mendeley.com/datasets/87txkw7khs/1). The Elsevier queries were developed to maximize SDG hits on the [Scopus database](https://dev.elsevier.com/documentation/ScopusSearchAPI.wadl). A detailed description of how each SDG query was developed can be found [here](https://elsevier.digitalcommonsdata.com/datasets/87txkw7khs/1). Version 1 is used in the 'text2sdg' package. 
+_SDGs 1-16 are covered (i.e. SDG-17 is not covered)_
+* **Ontology**: A dataset containing the SDG queries based on the keyword ontology of Bautista-Puig and Maule?n (2019)[1]. The queries are available from [figshare.com](https://figshare.com/articles/dataset/SDG_ontology/11106113/1). The authors of these queries first created an ontology from selected keywords present in the SDG descriptions and expanded them with keywords from publications from the Web of Science which included the phrases "Millennium Development Goals" and "Sustainable Development Goals".
+_All SDGs (1-17) are covered_
+* **SDSN**: A dataset containing SDG-specific keywords compiled from several universities from the Sustainable Development Solutions Network (SDSN) Australia, New Zealand & Pacific Network. The authors used UN documents, Google searches and personal communications as sources for keywords.
+_All SDGs (1-17) are covered_
+* **Siris**: These queries were developed by [SIRIS Academic](http://www.sirislab.com/lab/sdg-research-mapping/). The queries are available from Zenodo.org. The SIRIS queries were developed by extracting key terms from the UN official list of goals, targets and indicators as well from relevant literature around SDGs. The query system has subsequently been expanded with a pre-trained word2vec model and an algorithm that selects related words from Wikipedia.
+_SDGs 1-16 are covered (i.e. SDG-17 is not covered)_
+
+
+### Changes to the P3 database
 - All the projects that did not have an abstract were deleted.
 - The following columns have been deleted:
 -- Project Title English | text 
@@ -121,6 +114,7 @@ The dataset contains the following columns:
 -- Lay Summary (Italian) | text 
 -- Project Number String | text
 -- Abstract | text --> This is the original abstract of the research project. It differs from `abstract_english` (provided in the main dataset) in that it is written in the original language when it is not English.
+
 
 #### References
 [1] Bautista-Puig, N.; Maule?n E. (2019). Unveiling the path towards sustainability: is there a research interest on sustainable goals? In the 17th International Conference on Scientometrics & Informetrics (ISSI 2019), Rome (Italy), Volume II, ISBN 978-88-3381-118-5, p.2770-2771.
