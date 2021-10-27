@@ -53,7 +53,7 @@ additional_df <- read_csv("additional_dataset_without_sdg.zip")
 
 #join on main dataset
 library(dplyr)
-df <- df %>% 
+main_df <- main_df %>% 
   left_join(additional_df)
 ```
 
