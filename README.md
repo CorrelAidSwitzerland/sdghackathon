@@ -39,6 +39,7 @@ The labeling systems also differ in the number of SDGs that they assign. Elsevie
 |11| sdg | text | SDG that has been detected, NA if no SDG has been detected in this document by the given system |
 |12| system | text | Query system used to detect SDG (see details in Section "SDG detection process") |
 |13| hits | numeric | How many hits were produced for a given SDG for the given document by the given system |
+
 (*) These columns are filled out from a drop-down list provided by the SNSF submission system.
 
 ### Supporting dataset (`additional_dataset_without_sdg.zip`)
@@ -54,6 +55,7 @@ The labeling systems also differ in the number of SDGs that they assign. Elsevie
 |7| all_disciplines | text |List of all the discipline IDs involved in the project.|
 |8| abstract_translated| text |Flag indicating whether the abstract has been translated to English.|Free text|
 |9| abstract | text | The scientific abstract of the research project in English, either the original one or the translated one.|
+
 (*) These columns are filled out from a drop-down list provided by the SNSF submission system.
 
 ## Code
