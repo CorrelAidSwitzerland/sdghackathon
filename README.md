@@ -40,7 +40,35 @@ _SDGs 1-16 are covered (i.e. SDG-17 is not covered)_
 ## Description of datasets
 Two datasets are made available in the repository:
 - **Main dataset**: `main_dataset_with_sdg.csv`, which contains all the relevant information.
-- **Extended dataset**: `SNSF_Projects_detailed.csv`, which contains three additional columns. (`project_number_string`, `institution` and `abstract_translated_indicator` --see descriptions in item (2) below--). This dataset can be joined with the main dataset on the `project_number`, if one is interested in using this data.
+- **Extended dataset**: `additional_dataset_without_sdg.zip`, which contains additional columns --see descriptions in item (2) below--. This dataset can be joined with the main dataset on the `project_number`, if one is interested in using this data.
+
+### Reading and joining the datasets in R and pyhton
+
+#### R
+
+```
+library(readr)
+main_df <- read_csv("main_dataset_with_sdg.csv")
+additional_df <- read_csv("additional_dataset_without_sdg.zip")
+
+#join on main dataset
+library(dplyr)
+df <- df %>% 
+  left_join(additional_df)
+```
+
+#### Python
+
+```python
+import pandas as pd
+
+main_df = pd.read_csv("main_dataset_with_sdg.csv")
+additional_df = pd.read_csv("additional_dataset_without_sdg.zip")
+
+#join on main dataset
+main_df = main_df.merge(additional_df, left_on = "project_number", right_on = "project_number", how = "left")
+```
+
 
 ### 1) Detailed description of the main dataset (`main_dataset_with_sdg.csv`)
 The dataset contains the following columns:
@@ -56,7 +84,7 @@ The dataset contains the following columns:
 |7| hits | numeric | How many hits were produced for a given SDG for the given document by the given system |
 (*) These columns are filled out from a drop-down list provided by the SNSF submission system.
 
-### 2) Detailed description of the extended dataset (`SNSF_Projects_detailed.csv`)
+### 2) Detailed description of the extended dataset (`additional_dataset_without_sdg.zip`)
 The dataset contains the following columns:
 
 |Column #|Name|Type|Description|Type of entry|
