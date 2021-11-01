@@ -3,13 +3,13 @@
 ## Overview
 To goal of the hackathon is to achieve a better understanding of how the Swiss research landscape addresses the UN Sustainable Development Goals (SDGs), as well as of the methods used to map research to SDGs.
 
-We provide a preanalyzed data set of research projects based on the P3 (Projects-People-Publications) of the Swiss National Science Foundation (SNSF). The P3 database contains information on various types of research projects funded by the SNSF. We have used the text2sdg R package (https://dwulff.github.io/text2sdg/) to map project descriptions to the 17 SDGs using five different SDG-labeling systems. 
+We provide a preanalyzed data set of research projects based on the P3 (Projects-People-Publications) of the Swiss National Science Foundation (SNSF). The P3 database contains information on various types of research projects funded by the SNSF. We have used the [text2sdg](https://github.com/dwulff/text2sdg) R package to map project descriptions to the 17 SDGs using five different SDG-labeling systems. 
 
 The following sections provide more information on the data set and the SDG-labeling systems. 
 
 ### Data
 
-The source data was downloaded from the [P3 open data page](https://p3.snf.ch/Pages/DataAndDocumentation.aspx) and processed in the following way. First, we eliminated all projects without an abstract, which led to the exclusion of 44,604 projects (58%) including all projects funded prior to 2006. Second, all non-English abstracts were automatically translated to English using the [EasyNMT](https://pypi.org/project/EasyNMT/) Python library. Third, we matched all abstracts to the 17 SDGs using the five labeling systems implemented in the [text2sdg](https://cran.r-project.org/web/packages/text2sdg/index.html) R package. A list of changes to the P3 database can be found in the Appendix below.
+The source data was downloaded from the [P3 open data page](https://p3.snf.ch/Pages/DataAndDocumentation.aspx) and processed in the following way. First, we eliminated all projects without an abstract, which led to the exclusion of 44,604 projects (58%) including all projects funded prior to 2006. Second, all non-English abstracts were automatically translated to English using the [EasyNMT](https://pypi.org/project/EasyNMT/) Python library. Third, we matched all abstracts to the 17 SDGs using the five labeling systems implemented in the [text2sdg](https://github.com/dwulff/text2sdg) R package. A list of changes to the P3 database can be found in the Appendix below.
    
 We provide a **main data set** and a **supplementary data set**. The main data set provides information on key variables of interest, such as the discipline, the funding instrument, the hosting University, and the SDG labels. The supplementary data set includes additional information on the projects that was available in the P3 but are mostly not relevant for the goals of this hackathon. The one exception might be the abstracts of the projects, which were included in the supplementary data to avoid exceeding Githubs size limitations.
 
