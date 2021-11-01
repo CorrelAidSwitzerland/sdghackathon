@@ -31,8 +31,8 @@ The labeling systems also differ in the number of SDGs that they assign. Elsevie
 |4| authors | numeric |Project identifier.|
 |5| start_date | text |Date at which the project starts (dd.mm.yyyy).|
 |6| end_date | text |Actual date at which the project ends. Updated if necessary (dd.mm.yyyy).|
-|7| university(*) | text |Institution where the project will largely be carried out, based on a list to pick at the moment of the application.|
-|8| Funding Instrument | text |Research funding scheme as defined by https://www.snf.ch/en/9o5ezhuSlHENVQxr/page/overview-of-funding-schemes|
+|7| university(*) | text | Institution where the project will largely be carried out, based on a list to pick at the moment of the application.|
+|8| funding_instrument | text |Research funding scheme as defined by https://www.snf.ch/en/9o5ezhuSlHENVQxr/page/overview-of-funding-schemes|
 |9| approved_amount | text |Approved funding amount. Updated if modified. Format is text because not always a number is stored. Ex: it may say "not included in P3".|
 |10| discipline Name(*) | text |Discipline name defined by the SNSF. Defined for the main discipline.|
 |11| sdg | text | SDG that has been detected, NA if no SDG has been detected in this document by the given system |
