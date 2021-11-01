@@ -9,7 +9,7 @@ The following sections provide more information on the data set and the SDG-labe
 
 ### Data
 
-The source data was downloaded from the [P3 open data page](https://p3.snf.ch/Pages/DataAndDocumentation.aspx) and processed in the following way. First, we eliminated all projects without an abstract, which led to the exclusion of a number of projects, including all projects funded prior to 2006. Second, all non-English abstracts were automatically translated to English using the [EasyNMT](https://pypi.org/project/EasyNMT/) Python library. Third, we matched all abstracts to the 17 SDGs using the five labeling systems implemented in the [text2sdg](https://cran.r-project.org/web/packages/text2sdg/index.html) R package. A list of changes to the P3 database can in the Appendix below.
+The source data was downloaded from the [P3 open data page](https://p3.snf.ch/Pages/DataAndDocumentation.aspx) and processed in the following way. First, we eliminated all projects without an abstract, which led to the exclusion of 44604 projects (58%), including all projects funded prior to 2006. Second, all non-English abstracts were automatically translated to English using the [EasyNMT](https://pypi.org/project/EasyNMT/) Python library. Third, we matched all abstracts to the 17 SDGs using the five labeling systems implemented in the [text2sdg](https://cran.r-project.org/web/packages/text2sdg/index.html) R package. A list of changes to the P3 database can in the Appendix below.
    
 We provide a **main data set** and a **supplementary data set**. The main data set provices information on key variables of interest, such as the discipline, the funding instrument, the hosting University, and the SDG labels. The supplementary data set provides additional information on the projects such as, the actual abstract and more detail on the disciplines or funding instruments.
 
@@ -21,7 +21,7 @@ The labeling systems also differ in the number of SDGs that they assign. Elsevie
 
 ## Variables
 
-### Main dataset (`main_dataset_with_sdg.csv`)
+### Main dataset (`main_dataset_with_sdg.zip`)
 
 |Column #|Name|Type|Description|
 | ------ | ------ | ------ | ------ |
@@ -63,7 +63,7 @@ The labeling systems also differ in the number of SDGs that they assign. Elsevie
 
 ```
 library(readr)
-main_df <- read_csv("main_dataset_with_sdg.csv")
+main_df <- read_csv("main_dataset_with_sdg.zip")
 additional_df <- read_csv("additional_dataset_without_sdg.zip")
 
 #join on main dataset
@@ -77,7 +77,7 @@ main_df <- main_df %>%
 ```python
 import pandas as pd
 
-main_df = pd.read_csv("main_dataset_with_sdg.csv")
+main_df = pd.read_csv("main_dataset_with_sdg.zip")
 additional_df = pd.read_csv("additional_dataset_without_sdg.zip")
 
 #join on main dataset
