@@ -1,5 +1,8 @@
 # SDG Hackathon - Visualizing Swiss Sustainable Development Goals
 
+<img style="float: right;" src="logo.002.png" width="250" height="250">
+
+
 ## Overview
 To goal of the hackathon is to achieve a better understanding of how the Swiss research landscape addresses the UN Sustainable Development Goals (SDGs), as well as of the methods used to map research to SDGs.
 
@@ -21,11 +24,11 @@ The labeling systems also differ in the number of SDGs that they assign. Elsevie
 
 ## Files
 
-|Column #|Name|Description|
-| ------ | ------ | ------ |
-|1| sdg_hackathon_data.zip | Main data set with key variables including the SDG labels |
-|2| supplementary_data.zip | Supplementary data set with addtional variables included in P3 |
-|5| text2sdg_logo.png | Logo of the text2sdg package |
+|Name|Description|
+| ------ | ------ |
+| sdg_hackathon_data.zip | Main data set with key variables including the SDG labels |
+| supplementary_data.zip | Supplementary data set with addtional variables included in P3 |
+| text2sdg_logo.png | Logo of the text2sdg package |
 
 
 ## Variables
