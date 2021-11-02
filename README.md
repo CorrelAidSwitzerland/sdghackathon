@@ -1,9 +1,10 @@
 # SDG Hackathon - Visualizing Swiss Sustainable Development Goals
 
-<img style="float: right;" src="logo.002.png" width="250" height="250">
+
 
 
 ## Overview
+<img style="float: right;" src="logo.002.png" width="250" height="250">
 To goal of the hackathon is to achieve a better understanding of how the Swiss research landscape addresses the UN Sustainable Development Goals (SDGs), as well as of the methods used to map research to SDGs.
 
 We provide a preanalyzed data set of research projects based on the P3 (Projects-People-Publications) of the Swiss National Science Foundation (SNSF). The P3 database contains information on various types of research projects funded by the SNSF. We have used the [text2sdg](https://github.com/dwulff/text2sdg) R package to map project descriptions to the 17 SDGs using five different SDG-labeling systems. 
