@@ -23,6 +23,7 @@ The projects were labeled using five Lucene-style query systems implemented in t
 The labeling systems also differ in the number of SDGs that they assign. Elsevier and SIRIS only cover the first 16 SDGs excluding SDG 17 Global Partnership, whereas Aurora, SDSN, and Ontology cover all 17 SDGs. Additional detail on each query system is provided in the Appendix below.
 
 ## Files
+This repository contains three files, listed in the table below. A detailed description of the two data sets can be found in the next section.
 
 |Name|Description|
 | ------ | ------ |
@@ -73,10 +74,10 @@ The labeling systems also differ in the number of SDGs that they assign. Elsevie
 
 ### Reading and joining in R
 
-```
+```ruby
 library(readr)
-main_df <- read_csv("main_dataset_with_sdg.zip")
-additional_df <- read_csv("additional_dataset_without_sdg.zip")
+main_df <- read_csv("sdg_hackathon_data.zip")
+additional_df <- read_csv("supplementary_data.zip")
 
 #join on main dataset
 library(dplyr)
@@ -89,8 +90,8 @@ main_df <- main_df %>%
 ```python
 import pandas as pd
 
-main_df = pd.read_csv("main_dataset_with_sdg.zip")
-additional_df = pd.read_csv("additional_dataset_without_sdg.zip")
+main_df = pd.read_csv("sdg_hackathon_data.zip")
+additional_df = pd.read_csv("supplementary_data.zip")
 
 #join on main dataset
 main_df = main_df.merge(additional_df, left_on = "project_number", right_on = "project_number", how = "left")
