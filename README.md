@@ -3,7 +3,7 @@
 
 ## Overview
 
-<img align="right" src="logo.002.png" width="200" height="200">
+<img align="right" src="text2sdg_logo.png" width="200" height="200">
 
 To goal of the hackathon is to achieve a better understanding of how the Swiss research landscape addresses the UN Sustainable Development Goals (SDGs), as well as of the methods used to map research to SDGs.
 
