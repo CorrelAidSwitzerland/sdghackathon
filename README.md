@@ -11,7 +11,6 @@ We provide a preanalyzed data set of research projects based on the P3 (Projects
 
 The following sections provide more information on the data set and the SDG-labeling systems. 
 
-<br clear="right"/>
 
 ### Data
 
