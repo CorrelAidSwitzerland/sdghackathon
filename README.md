@@ -1,6 +1,5 @@
 # SDG Hackathon - Visualizing Swiss Sustainable Development Goals
 
-<img align="center" src="sdgs.png">
 
 
 ## Overview
@@ -22,6 +21,8 @@ We provide a main data set called **sdg_hackathon_data.zip** and a supplementary
 
 ### SDG labeling
 
+<img align="center" src="SDG_icons.png">
+
 The projects were labeled using five Lucene-style query systems implemented in the [text2sdg](https://github.com/dwulff/text2sdg) R package. The systems have been developed by different for-profit and non-profit organizations. So far, both independent and comparative evaluations of the quality of these systems are largely missing. However, it is clear that the systems differ in how liberal they assign the 17 SDGs to texts. The Elsevier, SIRIS, and, especially, the Aurora system recruit more complicated queries than SDSN and Ontology and are therefore more conservative (assign fewer SDGs) than the latter two.
 
 The labeling systems also differ in the number of SDGs that they assign. Elsevier and SIRIS only cover the first 16 SDGs excluding SDG 17 Global Partnership, whereas Aurora, SDSN, and Ontology cover all 17 SDGs. Additional detail on each query system is provided in the Appendix below.
@@ -33,7 +34,8 @@ This repository contains three files, listed in the table below. A detailed desc
 | ------ | ------ |
 | sdg_hackathon_data.zip | Main data set with key variables including the SDG labels |
 | supplementary_data.zip | Supplementary data set with addtional variables included in P3 |
-| sdgs.png | Logos of the 17 SDGs |
+| SDG_icnons.png | Overview of the 17 SDGs |
+| SDG Icons 2019.zip | A folder with the SDG icons that you can use for visualizations |
 | text2sdg_logo.png | Logo of the text2sdg package |
 
 
