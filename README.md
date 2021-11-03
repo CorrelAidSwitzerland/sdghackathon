@@ -33,7 +33,7 @@ This repository contains three files, listed in the table below. A detailed desc
 | ------ | ------ |
 | sdg_hackathon_data.zip | Main data set with key variables including the SDG labels |
 | supplementary_data.zip | Supplementary data set with addtional variables included in P3 |
-| SDG_icnons.png | Overview of the 17 SDGs |
+| SDG_icons.png | Overview of the 17 SDGs |
 | SDG Icons 2019.zip | A folder with the SDG icons that you can use for visualizations |
 | text2sdg_logo.png | Logo of the text2sdg package |
 
