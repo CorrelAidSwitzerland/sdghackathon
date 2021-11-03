@@ -33,6 +33,7 @@ This repository contains three files, listed in the table below. A detailed desc
 | ------ | ------ |
 | sdg_hackathon_data.zip | Main data set with key variables including the SDG labels |
 | supplementary_data.zip | Supplementary data set with addtional variables included in P3 |
+| sdgs.png | Logos of the 17 SDGs |
 | text2sdg_logo.png | Logo of the text2sdg package |
 
 
