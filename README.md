@@ -1,5 +1,7 @@
 # SDG Hackathon - Visualizing Swiss Sustainable Development Goals
 
+<img align="center" src="sdgs.png">
+
 
 ## Overview
 
