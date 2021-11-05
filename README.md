@@ -53,7 +53,7 @@ This repository contains three files, listed in the table below. A detailed desc
 |7| university(*) | text | Institution where the project will largely be carried out, based on a list to pick at the moment of the application.|
 |8| funding_instrument | text |Research funding scheme as defined by https://www.snf.ch/en/9o5ezhuSlHENVQxr/page/overview-of-funding-schemes|
 |9| approved_amount | text |Approved funding amount. Updated if modified. Format is text because not always a number is stored. Ex: it may say "not included in P3".|
-|10| discipline Name(*) | text |Discipline name defined by the SNSF. Defined for the main discipline.|
+|10| discipline_name(*) | text |Discipline name defined by the SNSF. Defined for the main discipline.|
 |11| sdg | text | SDG that has been detected, NA if no SDG has been detected in this document by the given system |
 |12| system | text | Query system used to detect SDG (see details in Section "SDG detection process") |
 |13| hits | numeric | How many hits were produced for a given SDG for the given document by the given system |
@@ -121,19 +121,7 @@ _SDGs 1-16 are covered (i.e. SDG-17 is not covered)_
 
 ### Changes to the P3 database
 - All the projects that did not have an abstract were deleted.
-- The following columns have been deleted:
--- Project Title English | text 
--- Responsible Applicant | text 
--- Lay Summary Lead (English) | logical 
--- Lay Summary (English) | text 
--- Lay Summary  Lead (German) | logical 
--- Lay Summary (German) | text 
--- Lay Summary Lead (French) | logical 
--- Lay Summary (French) | text 
--- Lay Summary Lead (Italian) | logical 
--- Lay Summary (Italian) | text 
--- Project Number String | text
--- Abstract | text --> This is the original abstract of the research project. It differs from `abstract_english` (provided in the main dataset) in that it is written in the original language when it is not English.
+- The following columns have been deleted: Project Title English, Responsible Applicant, Lay Summary Lead (English), Lay Summary (English), Lay Summary  Lead (German), Lay Summary (German), Lay Summary Lead (French), Lay Summary (French), Lay Summary Lead (Italian), Lay Summary (Italian), Project Number String, Abstract
 
 
 ### References
